@@ -1,0 +1,15 @@
+120 CA-MRSA genome fasta files can be found in Dr. Hadidy's Lab gDrive at: 
+https://drive.google.com/drive/folders/1yHg9BbKE4wBZ_OdCaE4qT4meI9pWBfkD
+Exclude isolates 56, 73, 77, 83, 87, 157, 161, 170, 182
+
+
+Packages required
+Python:
+numpy
+pandas
+matplotlib
+sklearn
+
+Linux:
+Anaconda packge manager (to install DSK)
+DSK (kmer counter)
