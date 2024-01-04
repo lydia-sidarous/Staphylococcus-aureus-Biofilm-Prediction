@@ -1,0 +1,15 @@
+Project Title: 
+Prediction of biofilm-forming Staphylococcus aureus isolates based on the presence/absence of kmers from biofilm-related genes in the isolate genomes.
+
+Biofilm-related genes (12): bap, clfA, clfB, cna, ebps, eno, fnbA, fnbB, icaA, icaB,icaC, icaD
+
+Input to the models: Kmer presence absence matrix having S. aureus sample IDs as row, 31-mers as columns and binary labels (0&1).
+Label for non-biofilm forming isolate --> 0, label for biofilm-forming isolates --> 1.
+
+Models to be built:
+1- RandomForest using the full kmer presence/absence matrix of dimensions (120, 22345)
+2- Support Vector Machine using the full kmer presence/absence matrix of dimensions (120, 22345)
+3- Support Vector Machine using a filtered kmer presence/absence matrix of dimensions (120, 1365) of the kmers used to build 
+the RandomForest model only.
+
+Project algorithms and phases are detailed in the README file to aid in navigation of the project scripts.
