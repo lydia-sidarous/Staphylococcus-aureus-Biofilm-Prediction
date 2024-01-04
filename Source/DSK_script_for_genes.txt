@@ -1,0 +1,16 @@
+# Creating separate conda environment to install and use DSK package in
+conda create -n dsk
+
+# Activating dsk conda environment to install and use DSK package in
+conda activate dsk
+
+# Installing DSK kmer counting software using conda
+conda install bioconda::dsk
+
+# Running dsk in directory containing all gene fasta files and using a .txt file containing all the gene fasta filenames listed (each file on a separate line)
+# ...so that the output all_gene_kmers.hdf5 file has the kmers of all the genes combined - even kmers that have an abundance of only 1 (-abundance-min 1).
+
+dsk -file <directory containing gene fasta files and .txt file of gene names>/gene_list -out all_gene_kmers -abundance-min 1
+
+# Converting the output all_gene_kmers.hdf5 binary file to a readable all_gene_kmers.txt file for use in preprocessing to build the kmer presence/absence matrix.
+dsk2ascii -file all_gene_kmers

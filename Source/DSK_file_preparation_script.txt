@@ -1,0 +1,35 @@
+# Genome fasta file renaming before using DSK kmer counting package. This is just to unify the filenames
+
+for file in *.fasta; do
+    if [[ $file == *pilosh* ]]; then
+        # Extract the prefix and suffix
+        prefix=${file%_pilosh*}
+        suffix=${file#*pilosh}
+
+        # Extract the numeric part and add leading zeros
+        numeric_part=${prefix##*_}
+        numeric_part=$(printf "%03d" $numeric_part)
+
+        # Create the new filename
+        new_filename="${prefix%_*}_${numeric_part}.fasta"
+
+        # Rename the file
+        mv "$file" "$new_filename"
+    elif [[ $file == *polish* ]]; then
+        # Extract the prefix and suffix
+        prefix=${file%_polish*}
+        suffix=${file#*polish}
+
+        # Extract the numeric part and add leading zeros
+        numeric_part=${prefix##*_}
+        numeric_part=$(printf "%03d" $numeric_part)
+
+        # Create the new filename
+        new_filename="${prefix%_*}_${numeric_part}.fasta"
+
+        # Rename the file
+        mv "$file" "$new_filename"
+    fi
+done
+
+

@@ -1,0 +1,33 @@
+# Creating separate conda environment to install and use DSK package in
+conda create -n dsk
+
+# Activating dsk conda environment to install and use DSK package in
+conda activate dsk
+
+# Installing DSK kmer counting software using conda
+conda install bioconda::dsk
+
+# Preparing the directories to save the output kmer files in
+mkdir dsk_outputs
+
+cd dsk_outputs # this folder stored the .hdf5 output files produced by DSK. however, since these files are binary and cannot be read, the readable .txt versions of the same file will be stored in the directory created below
+
+mkdir dsk_txts # this folder will store the .txt files created from the .hdf5 binary files from DSK.
+
+cd ..
+
+
+
+for file in <directory containing genome fasta files>/*.fasta; do
+	iso_name="${file%.fasta}"
+
+	# First creating DSK kmer frequency .hdf5 binary file for each isolate
+	dsk -file $file -out-dir dsk_outputs
+
+	cd dsk_outputs
+
+	# Converting .hdf5 binary file to .txt file containing kmers of current isolate, to be used in building kmer presence/absence matrix
+	dsk2ascii -file "${iso_name}.h5" -out dsk_txts/"${iso_name}.txt"
+
+	cd ..
+done
