@@ -1,0 +1,12 @@
+bap.fasta
+clfA.fasta
+clfB.fasta
+cna.fasta
+ebps.fasta
+eno.fasta
+fnbA.fasta
+fnbB.fasta
+icaA.fasta
+icaB.fasta
+icaC.fasta
+icaD.fasta
